@@ -6,7 +6,7 @@ DESTDIR:=
 PREFIX:=/usr/local
 bindir:=$(DESTDIR)$(PREFIX)/bin
 .PHONY: install
-install: hello
+install:
 	mkdir -p $(bindir)
 	cp $^ $(bindir)
 
