@@ -3,7 +3,7 @@ hello: hello.c
 	gcc -o hello hello.c
 
 DESTDIR:=
-PREFIX:=/usr/local
+PREFIX:=out
 bindir:=$(DESTDIR)$(PREFIX)/bin
 .PHONY: install
 install: hello
