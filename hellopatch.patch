@@ -1,0 +1,13 @@
+diff --git a/hello.c b/hello.c
+index 9346c53..abc5226 100644
+--- a/hello.c
++++ b/hello.c
+@@ -1,7 +1,7 @@
+ #include <stdio.h>
+ 
+ int main(void){
+-	puts("hello");
++	puts("hello guix 002.");
+ 	return 0;
+ }
+ 
