@@ -1,7 +1,10 @@
-(use-modules (guix packages)
+(use-modules 
+             (guix packages)
              (guix download)
+             (guix utils)
              (guix git-download)
              (guix build-system gnu)
+             (gnu packages)
              (guix licenses))
 
 (package
@@ -11,17 +14,28 @@
             (method git-fetch)
 	    (uri (git-reference
 		   (url "https://github.com/SaitoYutaka/guix-hello-package.git")
-		   (commit "e044f7f7d42703c779687d7612448a07ff661826")))
+		   (commit "cdcee718e3d614744b16717b8b1120eff9a6fc25")))
             (sha256
              (base32
-	       "0bnci0jgncasr7d7lx8m52nbz49scb7lhr5gf5xddrrz9ywfnqsz"))))
+	       "0bnci0jgncasr7d7lx8m52nbz49scb7lhr5gf5xddrrz9ywfnqsz"))
+	    (patches (search-patches
+		      "hellopatch.patch"))
+	    ))
   (build-system gnu-build-system)
   (arguments
     `(#:make-flags (list (string-append "PREFIX=" (assoc-ref %outputs "out")))
       #:phases (modify-phases %standard-phases
       (delete 'configure)
       (delete 'check)
-      )))
+      ;(add-after 'unpack 'apply-hello-patch
+;		 (lambda _
+;		   (for-each
+;		     (lambda (file-name)
+;		       (invoke "patch" "-p1" "-i" 
+;			       (string-append "./" file-name)))
+;		     (list "hellopatch.patch"))
+;		   #t)))))
+)))
   (synopsis "Hello sample")
   (description
     "sample")
