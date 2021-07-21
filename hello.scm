@@ -27,14 +27,6 @@
       #:phases (modify-phases %standard-phases
       (delete 'configure)
       (delete 'check)
-      ;(add-after 'unpack 'apply-hello-patch
-;		 (lambda _
-;		   (for-each
-;		     (lambda (file-name)
-;		       (invoke "patch" "-p1" "-i" 
-;			       (string-append "./" file-name)))
-;		     (list "hellopatch.patch"))
-;		   #t)))))
 )))
   (synopsis "Hello sample")
   (description
